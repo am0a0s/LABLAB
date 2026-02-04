@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Pangolin', cursive, sans-serif;
     padding: 20px;
     overflow-x: hidden;
     display: flex;
@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #FFF176 0%, #FFB6D9 25%, #FF6B9D 50%, #87CEEB 75%, #F0F8FF 100%);
 }
 
 h1 {
@@ -23,14 +23,14 @@ h1 {
 }
 
 .slideText {
-    color: white;
+    color: #FFFFFF;
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
     padding: 30px;
     max-width: 800px;
     line-height: 1.6;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7), 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .button-container {
@@ -70,6 +70,32 @@ h1 {
 .no-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+}
+
+.reaction-area {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.reaction-gif {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.reaction-text {
+    color: #FFFFFF;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7), 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    line-height: 1.6;
 }
 
 /* Mobile devices (portrait phones, less than 576px) */

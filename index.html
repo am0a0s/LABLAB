@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
@@ -14,18 +17,18 @@
     <script>
         var i = 1;
         var texts = [];
-        var time = 1000;
+        var time = 4000;
         var intervalId;
 
         texts[0] = "HI OMI!";
         texts[1] = "I just wanted to ask you something...";
         texts[2] = "but before that, I want to say a few things...";
         texts[3] = "For as long as I can remember, you have always loved me, accepted me, and supported me with all your heart.";
-        texts[4] = "I appreciate you for being the person and partner that you are.";
-        texts[5] = "I admire you and see you as an individual who is successful.";
-        texts[6] = "I love your passion and your goals. I will always support you.";
-        texts[7] = "We may have bad moments, but I know that our good moments outweigh them.";
-        texts[8] = "To my sweet, sweet girl.";
+        texts[4] = "I appreciate you for who you are.";
+        texts[5] = "I admire you and I see you as a successful individual.";
+        texts[6] = "I love your passion and your goals, I will always support you.";
+        texts[7] = "We may have bad moments, but I know that our best moments always outweigh them.";
+        texts[8] = "To my sweet, sweet girl...";
         texts[9] = "Will you be my Valentine?"; 
 
         function getRandomNumber(min, max) {
@@ -51,6 +54,25 @@
                         // Add shake animation to Yes button
                         document.getElementById("yesBtn").classList.add("animate__shakeY", "animate__infinite");
                         
+                        // Add event listener to Yes button
+                        var yesBtn = document.getElementById("yesBtn");
+                        yesBtn.addEventListener("click", function() {
+                            // Hide buttons and slide text
+                            document.getElementById("buttonContainer").style.display = "none";
+                            document.getElementsByClassName("slideText")[0].style.display = "none";
+                            
+                            // Show reaction area with happy response
+                            var reactionArea = document.getElementById("reactionArea");
+                            var reactionGif = document.getElementById("reactionGif");
+                            var reactionText = document.getElementById("reactionText");
+                            
+                            reactionGif.src = "https://media.tenor.com/DpJdyKQKgYkAAAAi/cat-jump.gif";
+                            reactionText.innerHTML = "YIPPIEEEEEEEEE<br><br>I LOVE YOU SO MUCH MY OMIIIIIIIIIIIIIIII.<br><br>YOU'RE MY VALENTINE NOW! <br><br>:))))))))))";
+                            
+                            reactionArea.style.display = "flex";
+                            reactionArea.classList.add("animate__fadeIn", "animate__heartBeat");
+                        });
+                        
                         // Add event listener to No button to increase Yes button size
                         var noBtn = document.getElementById("noBtn");
                         noBtn.addEventListener("click", function() {
@@ -61,6 +83,12 @@
                             yesBtn.style.width = (currentWidth + 20) + "px";
                             yesBtn.style.height = (currentHeight + 10) + "px";
                             yesBtn.style.fontSize = (currentFontSize + 2) + "px";
+                            
+                            // Add shake animation to Yes button
+                            yesBtn.classList.remove("animate__shakeY");
+                            setTimeout(function() {
+                                yesBtn.classList.add("animate__shakeY");
+                            }, 10);
 
                             // Apply fixed positioning for random placement
                             noBtn.style.position = "fixed";
@@ -88,8 +116,13 @@
 
     <div class="slideText animate__animated" name="slideText"></div>
 
+    <div id="reactionArea" class="reaction-area animate__animated" style="display: none;">
+        <img id="reactionGif" class="reaction-gif" src="" alt="Reaction">
+        <p id="reactionText" class="reaction-text"></p>
+    </div>
+
     <div id="buttonContainer" class="button-container animate__animated" style="display: none; gap:30px;">
-        <button id="yesBtn" class="response-btn yes-btn">Yes! 💖</button>
+        <button id="yesBtn" class="response-btn yes-btn animate__animated">Yes</button>
         <button id="noBtn" class="response-btn no-btn">No</button>
     </div>
 
