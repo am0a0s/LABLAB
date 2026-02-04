@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <link rel="stylesheet" href="index.css">
+    <title>For Omi</title>
+</head>
+<body>
+    <script>
+        var i = 1;
+        var texts = [];
+        var time = 1000;
+        var intervalId;
+
+        texts[0] = "HI OMI!";
+        texts[1] = "I just wanted to ask you something...";
+        texts[2] = "but before that, I want to say a few things...";
+        texts[3] = "For as long as I can remember, you have always loved me, accepted me, and supported me with all your heart.";
+        texts[4] = "I appreciate you for being the person and partner that you are.";
+        texts[5] = "I admire you and see you as an individual who is successful.";
+        texts[6] = "I love your passion and your goals. I will always support you.";
+        texts[7] = "We may have bad moments, but I know that our good moments outweigh them.";
+        texts[8] = "To my sweet, sweet girl.";
+        texts[9] = "Will you be my Valentine?"; 
+
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        function changeText() {
+            document.getElementsByClassName("slideText")[0].classList.remove("animate__fadeIn");
+            document.getElementsByClassName("slideText")[0].classList.add("animate__fadeOut");
+            
+            setTimeout(function() {
+                document.getElementsByClassName("slideText")[0].innerHTML = texts[i];
+                document.getElementsByClassName("slideText")[0].classList.remove("animate__fadeOut");
+                document.getElementsByClassName("slideText")[0].classList.add("animate__fadeIn");
+                
+                // Stop the slideshow if we reached the last text
+                if (i >= texts.length - 1) {
+                    clearInterval(intervalId);
+                    // Show the buttons after a short delay
+                    setTimeout(function() {
+                        document.getElementById("buttonContainer").style.display = "flex";
+                        document.getElementById("buttonContainer").classList.add("animate__fadeIn");
+                        // Add shake animation to Yes button
+                        document.getElementById("yesBtn").classList.add("animate__shakeY", "animate__infinite");
+                        
+                        // Add event listener to No button to increase Yes button size
+                        var noBtn = document.getElementById("noBtn");
+                        noBtn.addEventListener("click", function() {
+                            var yesBtn = document.getElementById("yesBtn");
+                            var currentWidth = yesBtn.offsetWidth;
+                            var currentHeight = yesBtn.offsetHeight;
+                            var currentFontSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+                            yesBtn.style.width = (currentWidth + 20) + "px";
+                            yesBtn.style.height = (currentHeight + 10) + "px";
+                            yesBtn.style.fontSize = (currentFontSize + 2) + "px";
+
+                            // Apply fixed positioning for random placement
+                            noBtn.style.position = "fixed";
+                            
+                            var winWidth = window.innerWidth;
+                            var winHeight = window.innerHeight;
+
+                            randomTop = getRandomNumber(0,winHeight);
+                            randomLeft = getRandomNumber(0,winWidth);
+                            noBtn.style.top = randomTop + "px";
+                            noBtn.style.left = randomLeft + "px";
+                        });
+                    }, 1000);
+                } 
+                i++;
+            }, 500);
+        }
+
+        window.onload = function() {
+            document.getElementsByClassName("slideText")[0].innerHTML = texts[0];
+            document.getElementsByClassName("slideText")[0].classList.add("animate__fadeIn");
+            intervalId = setInterval(changeText, time);
+        }
+    </script>
+
+    <div class="slideText animate__animated" name="slideText"></div>
+
+    <div id="buttonContainer" class="button-container animate__animated" style="display: none; gap:30px;">
+        <button id="yesBtn" class="response-btn yes-btn">Yes! 💖</button>
+        <button id="noBtn" class="response-btn no-btn">No</button>
+    </div>
+
+</body>
+</html>
