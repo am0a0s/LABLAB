@@ -1,5 +1,5 @@
-/* Import Great Vibes font */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+/* Import Pangolin font */
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
 
 /* Base styles for all devices */
 * {
@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: 'Great Vibes', cursive, sans-serif;
+    font-family: 'Pangolin', cursive, sans-serif;
     padding: 20px;
     overflow-x: hidden;
     display: flex;
@@ -17,7 +17,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(45deg, #FF0000 0%, #FFB6D9 50%, #FFFFFF 100%);
+    background: linear-gradient(135deg, #FFF176 0%, #FFB6D9 25%, #FF6B9D 50%, #87CEEB 75%, #F0F8FF 100%);
 }
 
 h1 {
